@@ -1,0 +1,44 @@
+// Схема базы данных (Prisma).
+// Из этого файла Prisma генерирует и саму БД, и код для запросов.
+// Он же — основа ERD для отчёта (раздел 3.2).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"            // на деплое поменяем на "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Пользователь
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String                     // храним ХЕШ пароля
+  createdAt DateTime @default(now())
+  habits    Habit[]
+}
+
+// Привычка
+model Habit {
+  id          Int          @id @default(autoincrement())
+  name        String
+  createdAt   DateTime     @default(now())
+
+  userId      Int
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  completions Completion[]              // отметки выполнения по дням
+}
+
+// Отметка выполнения привычки за конкретный день
+model Completion {
+  id      Int    @id @default(autoincrement())
+  day     String                         // дата в виде 'YYYY-MM-DD'
+
+  habitId Int
+  habit   Habit  @relation(fields: [habitId], references: [id], onDelete: Cascade)
+
+  @@unique([habitId, day])               // одна привычка — одна отметка в день
+}
