@@ -15,7 +15,7 @@
 
 - **Frontend:** React + Vite
 - **Backend:** Node.js + Express
-- **База данных:** SQLite (через Prisma ORM); на деплое — PostgreSQL
+- **База данных:** PostgreSQL (через Prisma ORM)
 - **Авторизация:** JWT + bcrypt
 
 ## Запуск локально
@@ -27,7 +27,8 @@
 cd server
 npm install
 cp .env.example .env          # создать файл окружения
-npx prisma migrate dev        # создать базу и таблицы
+# в .env вписать DATABASE_URL своей PostgreSQL (подойдёт бесплатная на neon.tech)
+npx prisma migrate dev        # создать таблицы в базе
 npm run dev                   # http://localhost:4000
 ```
 
@@ -42,7 +43,14 @@ npm run dev                   # http://localhost:5173
 
 ## Деплой
 
-Ссылка появится после публикации: _(скоро)_
+- **Сайт:** https://habit-tracker-7h5j.onrender.com
+- **API:** https://habit-tracker-api-ebr5.onrender.com (проверка: [/api/health](https://habit-tracker-api-ebr5.onrender.com/api/health))
+- **База данных:** PostgreSQL (Neon, Франкфурт)
+
+**Тестовый доступ:** `demo@mail.ru` / `demo123456`
+
+> ⏳ Бесплатный тариф Render «усыпляет» сервер после 15 минут простоя —
+> первый запрос может занять 30–60 секунд. Дальше всё работает быстро.
 
 ## Структура
 
