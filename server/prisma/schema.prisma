@@ -7,7 +7,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"            // на деплое поменяем на "postgresql"
+  provider = "postgresql"        // облачная база Neon (и локально, и на деплое)
   url      = env("DATABASE_URL")
 }
 

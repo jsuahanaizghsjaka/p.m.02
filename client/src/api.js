@@ -1,6 +1,8 @@
 /* Общение с бэкендом + хранение сессии (токен) в localStorage. */
 
-const API = 'http://localhost:4000/api';
+// Адрес API: на деплое задаётся переменной VITE_API_URL (см. README),
+// локально по умолчанию — наш сервер на :4000
+const API = (import.meta.env.VITE_API_URL || 'http://localhost:4000') + '/api';
 
 // --- сессия (токен и пользователь хранятся в браузере) ---
 export function getToken() { return localStorage.getItem('token'); }
