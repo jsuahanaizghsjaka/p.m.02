@@ -1,7 +1,8 @@
 # Habit Tracker
 
-<!-- Бейдж Code Climate подключим на шаге деплоя (нужен для оценки «4/5»):
-[![Maintainability](https://api.codeclimate.com/...)](https://codeclimate.com/...) -->
+[![Maintainability](https://qlty.sh/gh/jsuahanaizghsjaka/projects/p.m.02/maintainability.svg)](https://qlty.sh/gh/jsuahanaizghsjaka/projects/p.m.02)
+
+> Бейдж — Qlty (новое название Code Climate Quality; codeclimate.com перенаправляет на qlty.sh).
 
 Веб-приложение для отслеживания привычек. Пользователь регистрируется, заводит
 свои привычки, каждый день отмечает выполненные и видит «стрик» — сколько дней
